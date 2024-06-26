@@ -11,37 +11,53 @@ Jenkins Installation.
 
 **Steps:**
 **1. Configure an EC2 Instance in AWS**
+   
    Launch a new EC2 instance based on your preferred configuration by taking the Ubunut AMI.
 
+
 **2. Install Java on Ubuntu 22.04**
+   
    Connect to your EC2 instance via SSH.
    Update package lists and install Java 17.
 
+
 **3. Install Jenkins on Ubuntu 22.04**
+  
    Add the Jenkins repository key and source list.
    Update package lists and install Jenkins.
 
+
 **4. Enable and Start Jenkins**
+
    Enable Jenkins to start at boot time and start the service.
    Check the status of Jenkins service.
    Install Git on Ubuntu 22.04 LTS
 
+
 **5. Install Git using the apt package manager**
+
    Access Jenkins Web Interface
 
+
 **6. Open your web browser and navigate to http://<your_instance_ip>:8080**
+
    Retrieve the initial administrator password using the provided command and paste it into the browser prompt.
 
+
 **7. Configure Jenkins User and Credentials**
+
    GO to the Manage Jenkins>>Credentials>>system>>Global credentials, add the necessary credentials.
 
+
 **8. Install Docker in Ubuntu 22.04**
-   sudo apt install docker.io            # Install the Docker, for jenkins to interact with the Docker
-   sudo usermod -aG docker $USER         # Grant your user permission to run Docker commands:
-   sudo chmod 666 /var/run/docker.sock   # Change permissions for the Docker socket:
-   sudo systemctl restart jenkins        # Restart Jenkins:
+
+   sudo apt install docker.io                                                                 # Install the Docker, for jenkins to interact with the Docker
+   sudo usermod -aG docker $USER                                                              # Grant your user permission to run Docker commands:
+   sudo chmod 666 /var/run/docker.sock                                                        # Change permissions for the Docker socket:
+   sudo systemctl restart jenkins                                                             # Restart Jenkins:
 
 **9. Install Jenkins Plugins**
+
    In Jenkins, go to "Manage Jenkins" -> "Plugins" -> "Available Plugins".
    Install the following plugins:
    - Docker
@@ -55,6 +71,7 @@ Jenkins Installation.
    Create a new role with the "AmazonEC2ContainerRegistryFullAccess" policy attached.          # this attached to EC2 instance where jenkins installed, because jenkins to authenticate the ECR registry to push the image.
 
 **10. Install the AWS CLI on Ubuntu 22.04:**
+
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"          # Download the AWS CLI installation package from the official AWS website
     unzip awscliv2.zip                                                                         # Unzip the downloaded package
     sudo ./aws/install                                                                         # Install the AWS CLI
@@ -119,6 +136,7 @@ Lastely, You can verify in the AWS account, wheather ECR images is been pushed.
 **The following process regarding to the CD part, where we Deploy the AWS ECR image to the EKS Cluster, using Terraform Automation Code.**
 
 **12. Launch a EC2 machine and run the following command to install terraform**
+
       1. sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
       2. wget -O- https://apt.releases.hashicorp.com/gpg | \
          gpg --dearmor | \
@@ -128,13 +146,16 @@ Lastely, You can verify in the AWS account, wheather ECR images is been pushed.
          --fingerprint
 
 **13. Install AWS CLI:**
+
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     sudo ./aws/install.
 
 **14. Execute the main.tf file provided above to deploy the ERC image to EKS cluster**
 
+
 **15. Configure the Load balancer endpoint to EKS Worker node:**
+
      1. Access the Load Balancer Service:
          Log in to your cloud provider's management console.
          Navigate to the section dedicated to Load Balancing services.
