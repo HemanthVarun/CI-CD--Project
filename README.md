@@ -52,12 +52,12 @@ Jenkins Installation.
    Click "Create repository" and provide a name for your repository.
    Create an IAM Role with AmazonEC2ContainerRegistryFullAccess Policy
    In the AWS Management Console, navigate to the IAM service.
-   Create a new role with the "AmazonEC2ContainerRegistryFullAccess" policy attached.    # this attached to EC2 instance where jenkins installed, because jenkins to authenticate the ECR registry to push the image.
+   Create a new role with the "AmazonEC2ContainerRegistryFullAccess" policy attached.          # this attached to EC2 instance where jenkins installed, because jenkins to authenticate the ECR registry to push the image.
 
 **10. Install the AWS CLI on Ubuntu 22.04:**
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"    # Download the AWS CLI installation package from the official AWS website
-    unzip awscliv2.zip                                                                   # Unzip the downloaded package
-    sudo ./aws/install                                                                   # Install the AWS CLI
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"          # Download the AWS CLI installation package from the official AWS website
+    unzip awscliv2.zip                                                                         # Unzip the downloaded package
+    sudo ./aws/install                                                                         # Install the AWS CLI
 
 **11. Create a Jenkins Pipeline:**
     Go to the Jenkins dashboard.
