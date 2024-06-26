@@ -65,6 +65,7 @@ Jenkins Installation.
     Provide a name for your pipeline job.
     In the "Pipeline" definition, paste the following code snippet, replacing placeholders with your specific values
     **Follow this Groovy script for the pipline build process:**
+
     pipeline {
     agent any
     environment {
