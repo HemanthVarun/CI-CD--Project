@@ -8,7 +8,7 @@ pipeline {
                     checkout scmGit(
                         branches: [[name: '*/main']],
                         extensions: [],
-                        userRemoteConfigs: [[url: 'https://github.com/HemanthVarun/reactjs-CI-CD-project.git']]
+                        userRemoteConfigs: [[url: 'https://github.com/HemanthVarun/CI-CD--Project.git']]
                     )
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
         stage('Deploying ReactJS Application') {
             steps {
                 script {
-                    dir('EKS-Cluster/Config-files') {
+                    dir('CI-CD--Project') {
                         // Update kubeconfig to point to EKS cluster
                         sh 'aws eks update-kubeconfig --name my-eks-cluster'
 
