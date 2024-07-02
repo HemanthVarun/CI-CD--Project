@@ -17,14 +17,32 @@ pipeline {
         stage('Deploying ReactJS Application') {
             steps {
                 script {
-                    dir('CI-CD--Project') {
+                    dir('CI-CD--Project/wordpress.yaml') {
                         // Update kubeconfig to point to EKS cluster
                         sh 'aws eks update-kubeconfig --name my-eks-cluster'
 
                         // Apply Kubernetes manifests
                         sh 'kubectl apply -f wordpress.yaml'
+                    }
+                    dir('CI-CD--Project/pv_wordpress.yaml') {
+                        // Update kubeconfig to point to EKS cluster
+                        sh 'aws eks update-kubeconfig --name my-eks-cluster'
+
+                        // Apply Kubernetes manifests
                         sh 'kubectl apply -f pv_wordpress.yaml'
+                    }
+                    dir('CI-CD--Project/pv.yaml') {
+                        // Update kubeconfig to point to EKS cluster
+                        sh 'aws eks update-kubeconfig --name my-eks-cluster'
+
+                        // Apply Kubernetes manifests
                         sh 'kubectl apply -f pv.yaml'
+                    }
+                    dir('CI-CD--Project/mysql_deployment.yaml') {
+                        // Update kubeconfig to point to EKS cluster
+                        sh 'aws eks update-kubeconfig --name my-eks-cluster'
+
+                        // Apply Kubernetes manifests
                         sh 'kubectl apply -f mysql_deployment.yaml'
                     }
                 }
